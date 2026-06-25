@@ -26,6 +26,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true   # Pages가 아직 없으면 액션이 직접 활성화
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
