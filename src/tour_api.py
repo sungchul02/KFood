@@ -59,7 +59,13 @@ def get_key() -> str | None:
     return None
 
 
+_SEARCH_CACHE: dict = {}
+
+
 def _search(keyword: str, content_type_id: int, rows: int = 6) -> list[dict]:
+    ck = (keyword, content_type_id, rows)
+    if ck in _SEARCH_CACHE:
+        return _SEARCH_CACHE[ck]
     key = get_key()
     params = {
         "serviceKey": key, "MobileOS": "ETC", "MobileApp": "KFoodMatch",
@@ -70,10 +76,12 @@ def _search(keyword: str, content_type_id: int, rows: int = 6) -> list[dict]:
     r = requests.get(f"{BASE}/searchKeyword2", params=params, timeout=15)
     resp = r.json().get("response", {})
     if resp.get("header", {}).get("resultCode") != "0000":
+        _SEARCH_CACHE[ck] = []
         return []
     body = resp.get("body", {})
     items = body.get("items")
     if not items or items == "":
+        _SEARCH_CACHE[ck] = []
         return []
     rows_ = items["item"]
     if isinstance(rows_, dict):
@@ -87,6 +95,7 @@ def _search(keyword: str, content_type_id: int, rows: int = 6) -> list[dict]:
             "mapx": it.get("mapx"), "mapy": it.get("mapy"),
             "tel": it.get("tel", ""),
         })
+    _SEARCH_CACHE[ck] = out
     return out
 
 
