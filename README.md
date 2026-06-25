@@ -1,6 +1,11 @@
-# 유사 한식 추천 데이터 매핑 (프로토타입)
+# 유사 한식 추천 데이터 매핑 (K-Food Match)
 
-국가별 대표 음식을 고르면 **재료·맛이 비슷한 한국 음식**을 추천하는 서비스의 PoC.
+국가별 대표 음식을 고르면 **재료·맛이 비슷한 한국 음식**을 추천하고, 그 음식의
+**맛집·특산물**까지 안내하는 식문화·관광 융합 서비스.
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/sungchul02/KFood)
+
+> 위 버튼 → Render 로그인 → 환경변수 `TOUR_API_KEY` 입력 → 배포 → URL 발급
 
 ## 구조
 ```
