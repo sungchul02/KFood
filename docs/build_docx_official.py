@@ -93,7 +93,7 @@ set_cell(info.cell(2, 0), "제품·서비스 유형", bold=True, fill="F2F2F2")
 typ = info.cell(2, 1)
 lines = [
     "□ 모바일 앱(APP)   URL 주소 :",
-    "☑ 웹   URL 주소 : 로컬 실행 http://localhost:8000  (실행 방법 본문 부록 참조)",
+    "☑ 웹   URL 주소 : https://sungchul02.github.io/KFood/",
     "□ 기타",
 ]
 for i, t in enumerate(lines):
