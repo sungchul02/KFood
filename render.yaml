@@ -1,0 +1,12 @@
+# Render.com 배포 설정 (Blueprint)
+# 배포: Render 대시보드 → New → Blueprint → 이 저장소 선택
+services:
+  - type: web
+    name: k-food-match
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    envVars:
+      - key: TOUR_API_KEY   # data.go.kr TourAPI 키 (대시보드에서 직접 입력)
+        sync: false

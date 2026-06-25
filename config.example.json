@@ -1,0 +1,4 @@
+{
+  "_안내": "data.go.kr에서 받은 TourAPI '일반 인증키(Decoding)'를 아래에 붙여넣고, 이 파일을 config.json 으로 복사하세요.",
+  "tour_api_key": "여기에_디코딩_서비스키_붙여넣기"
+}

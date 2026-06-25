@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>K-Food Match · 유사 한식 추천</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="logo">🍜 K-Food <span>Match</span></div>
+    <p class="tagline">익숙한 우리나라 음식으로 찾는, 입맛에 맞는 <b>한국 음식</b></p>
+  </div>
+</header>
+
+<!-- 진행 단계 -->
+<nav class="steps">
+  <div class="step is-active" data-step="1"><span>1</span>국가 선택</div>
+  <div class="step" data-step="2"><span>2</span>음식 선택</div>
+  <div class="step" data-step="3"><span>3</span>추천 결과</div>
+</nav>
+
+<main>
+  <!-- STEP 1 -->
+  <section id="panel-1" class="panel is-active">
+    <h2 class="panel-title">어느 나라에서 오셨나요? <span class="hint">지구본을 <b>드래그</b>해 돌리고, 색이 들어온 나라를 클릭하세요</span></h2>
+    <div class="globe-wrap">
+      <svg id="globe"></svg>
+      <div id="globe-tip" class="globe-tip"></div>
+    </div>
+    <div class="globe-legend">
+      <span><i class="lg-data"></i>추천 가능 국가 (클릭)</span>
+      <span><i class="lg-none"></i>데이터 준비 중</span>
+    </div>
+    <details class="fallback">
+      <summary>🔎 목록에서 바로 찾기</summary>
+      <div id="country-grid" class="country-grid"></div>
+    </details>
+  </section>
+
+  <!-- STEP 2 -->
+  <section id="panel-2" class="panel">
+    <button class="back" data-to="1">← 국가 다시 선택</button>
+    <h2 class="panel-title"><span id="picked-country"></span> 평소 즐겨 먹는 음식을 골라주세요</h2>
+    <div id="food-grid" class="food-grid"></div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section id="panel-3" class="panel">
+    <button class="back" data-to="2">← 음식 다시 선택</button>
+    <div id="source-card"></div>
+    <h2 class="panel-title">🇰🇷 입맛에 맞는 한국 음식</h2>
+    <div id="result-grid" class="result-grid"></div>
+  </section>
+</main>
+
+<!-- 맛집·특산물 패널 -->
+<div id="places-overlay" class="overlay">
+  <div class="sheet">
+    <button id="places-close" class="sheet-close">✕</button>
+    <h3 id="places-title">📍 맛집 · 특산물</h3>
+    <div id="places-body"></div>
+    <div class="sheet-src">관광 데이터: 한국관광공사 TourAPI (data.go.kr)</div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+
+<footer>데이터 출처: THEMEALDB · 식품안전나라(식품의약품안전처) · 프로토타입</footer>
+<script src="/app.js"></script>
+</body>
+</html>
